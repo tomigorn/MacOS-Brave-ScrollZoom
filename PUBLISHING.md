@@ -255,13 +255,91 @@ It works in both Chrome and Brave (Brave supports the Chrome Web Store natively)
 
 ---
 
+## GitHub releases (recommended)
+
+Publishing a GitHub release alongside each store submission is good practice. It gives you a permanent, public, versioned archive of exactly what is on the store — useful for auditing, for users who want to sideload a specific version, and for your own future reference. The ZIP you already create for the store upload doubles as the release asset with no extra work.
+
+### One-time setup — push the repo to GitHub
+
+If you have not already done this:
+
+1. Go to https://github.com and sign in (or create a free account)
+2. Click **New repository** (the `+` button, top right)
+3. Name it `scroll-zoom` (or whatever you prefer), set it to **Public**, leave everything else unchecked, click **Create repository**
+4. GitHub shows you a set of commands. Run these in your project directory:
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/scroll-zoom.git
+git push -u origin main
+```
+
+Replace `YOUR_USERNAME` with your GitHub username. After this, your code is on GitHub.
+
+### For every release — tag, GitHub release, then store upload
+
+Do these steps in order each time you publish a new version.
+
+**Step 1 — Make sure your version in `manifest.json` is correct**
+
+The tag and the manifest version should always match. If you are publishing `1.0.0`, `manifest.json` should have `"version": "1.0.0"`.
+
+**Step 2 — Commit any last changes and push**
+
+```bash
+git add manifest.json   # and any other changed files
+git commit -m "Release 1.0.0"
+git push origin main
+```
+
+**Step 3 — Create and push a git tag**
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The `v` prefix is convention (e.g. `v1.0.0`, `v1.0.1`, `v1.1.0`). It has no effect on the store — it is purely for GitHub.
+
+**Step 4 — Create the ZIP (same as store packaging)**
+
+```bash
+zip -r scroll-zoom-1.0.0.zip manifest.json src/ icons/
+```
+
+**Step 5 — Create the GitHub release**
+
+1. Go to your repository on GitHub (e.g. `https://github.com/YOUR_USERNAME/scroll-zoom`)
+2. Click **Releases** (right sidebar) → **Create a new release** (or **Draft a new release**)
+3. In the **Choose a tag** dropdown, select the tag you just pushed (`v1.0.0`)
+4. Set the **Release title** to `v1.0.0`
+5. In the description box, write brief release notes — what changed, what the extension does (for the first release, a short summary is enough):
+
+```
+Initial public release.
+
+Zoom any webpage with scroll wheel + modifier key on macOS.
+Configurable via the toolbar popup (Control, Option, or Command).
+Zoom range: 25%–500%.
+```
+
+6. Drag and drop `scroll-zoom-1.0.0.zip` onto the **Attach binaries** area at the bottom
+7. Click **Publish release**
+
+**Step 6 — Upload the same ZIP to the Chrome Web Store**
+
+Use the ZIP you just attached to the GitHub release. Follow Phase 3 in this guide.
+
+This way both the store and GitHub always have the exact same file for each version.
+
+---
+
 ## Updating the extension later
 
 When you make changes to the code:
 
 1. Bump the version in `manifest.json` — e.g. `"version": "1.0.0"` → `"1.0.1"`. The store rejects a ZIP with the same version number as a previously uploaded version.
-2. Create a new ZIP the same way as in step 2.5
-3. In the dashboard, open your extension, go to **Package**, click **Upload new package**, and upload the ZIP
+2. Follow the GitHub release steps above (new commit, new tag `v1.0.1`, new ZIP, new release)
+3. In the Chrome Web Store dashboard, open your extension, go to **Package**, click **Upload new package**, and upload the same ZIP
 4. Click **Submit for review**
 5. Your existing users get the update automatically within a day or two of approval
 
@@ -276,3 +354,5 @@ When you make changes to the code:
 - [ ] Screenshots taken and sized to exactly 1280×800 or 640×400
 - [ ] Description and permission justifications written
 - [ ] Tested the extension one more time on a clean reload after zipping
+- [ ] Git tag created and pushed to GitHub (`git tag v1.0.0 && git push origin v1.0.0`)
+- [ ] GitHub release created with the ZIP attached
