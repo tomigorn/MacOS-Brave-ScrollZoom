@@ -1,16 +1,17 @@
 # MacOS Brave/Chrome Scroll Zoom
 
-A Chrome/Brave extension for macOS that enables page zoom via the scroll wheel combined with a modifier key — **Control**, **Option (⌥)**, or **Command (⌘)**.
+A Chrome/Brave extension for macOS that lets you zoom pages with the scroll wheel + a modifier key.
 
 ## Why
 
-On macOS, Chrome natively zooms with Ctrl+scroll (which also catches trackpad pinch gestures). This extension extends that behaviour to the Option and Command modifier keys, and gives you smoother, configurable control over zoom speed and reset behaviour.
+macOS doesn't natively support zooming with Option or Command + scroll. This extension fills that gap and lets you pick whichever modifier key feels natural, without touching the trackpad's built-in pinch-to-zoom.
 
 ## Features
 
-- Scroll zoom triggered by ⌃ (Control), ⌥ (Option), or ⌘ (Command) + mouse wheel
-- Configurable zoom step and maximum/minimum zoom levels
-- Per-tab zoom state, reset on tab reload
+- Scroll zoom triggered by a configurable modifier key (default: **Control ⌃**)
+- Choose between Control, Option ⌥, or Command ⌘ from the settings popup
+- Zoom range: 25 % – 500 %, shown in the address bar just like native browser zoom
+- Trackpad pinch-to-zoom is completely unaffected
 - Works in Brave and Chrome on macOS
 
 ## Requirements
@@ -25,14 +26,22 @@ On macOS, Chrome natively zooms with Ctrl+scroll (which also catches trackpad pi
 3. Enable **Developer mode**
 4. Click **Load unpacked** and select this directory
 
+## Usage
+
+Hold your chosen modifier key and scroll. Click the extension icon in the toolbar to change the modifier key or reset to the default.
+
+## Known limitations
+
+**Browser internal pages** (`brave://…`, `chrome://…`, extension pages) are outside the reach of any Chrome extension — the browser's security model prevents content scripts from running there. Scroll zoom will not work on those pages regardless of settings. Use the native ⌘ `+` / ⌘ `−` shortcuts or trackpad pinch instead.
+
 ## Project structure
 
 ```
 manifest.json        Extension manifest (v3)
 src/
-  content.js         Intercepts wheel events and applies zoom
-  background.js      Service worker — handles tab zoom via chrome.tabs API
-  popup/             Optional settings popup
+  content.js         Intercepts wheel events and triggers zoom
+  background.js      Service worker — applies zoom via chrome.tabs API
+  popup/             Settings popup (modifier key selector)
 icons/               Extension icons (16, 48, 128 px)
 ```
 

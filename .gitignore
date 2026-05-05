@@ -27,3 +27,5 @@ build/
 
 # Env / secrets
 .env
+
+.claude/

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scroll Zoom</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Scroll Zoom</h1>
+
+  <p class="section-label">Modifier key</p>
+  <div class="options">
+    <label>
+      <input type="radio" name="key" value="Control">
+      <span>Control <kbd>⌃</kbd></span>
+    </label>
+    <label>
+      <input type="radio" name="key" value="Alt">
+      <span>Option <kbd>⌥</kbd></span>
+    </label>
+    <label>
+      <input type="radio" name="key" value="Meta">
+      <span>Command <kbd>⌘</kbd></span>
+    </label>
+  </div>
+
+  <button id="reset">Reset to defaults</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
