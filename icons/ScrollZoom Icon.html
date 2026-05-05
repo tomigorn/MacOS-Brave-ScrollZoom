@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ScrollZoom — Extension Icon</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #f4f4f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1d1d1f;
+  }
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    padding: 64px 32px;
+    box-sizing: border-box;
+  }
+  .hero {
+    width: 512px;
+    height: 512px;
+    display: block;
+    box-shadow: 0 30px 80px -20px rgba(0, 113, 227, 0.45),
+                0 10px 30px -10px rgba(0, 0, 0, 0.18);
+    border-radius: 114px;
+  }
+  .scales {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .scale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .scale .label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6e6e73;
+    font-weight: 500;
+  }
+  .scale svg {
+    display: block;
+    background: transparent;
+  }
+  .meta {
+    text-align: center;
+    max-width: 540px;
+  }
+  .meta h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6e6e73;
+    margin: 0 0 8px;
+  }
+  .meta p {
+    font-size: 13px;
+    color: #86868b;
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="meta">
+      <h1>ScrollZoom · Extension Icon</h1>
+      <p>Flat magnifying glass with a plus on an electric blue rounded square. Designed to remain crisp from 512&nbsp;px down to 16&nbsp;px.</p>
+    </div>
+
+    <!-- Master 512×512 -->
+    <svg class="hero" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="ScrollZoom icon">
+      <defs>
+        <symbol id="scrollzoom" viewBox="0 0 512 512">
+          <!-- Rounded square background -->
+          <rect x="0" y="0" width="512" height="512" rx="114" ry="114" fill="#9007af"/>
+
+          <!-- Handle (drawn first, behind the lens ring) -->
+          <line
+            x1="281.3" y1="281.3"
+            x2="410.0" y2="410.0"
+            stroke="#ffffff"
+            stroke-width="44"
+            stroke-linecap="round"
+          />
+
+          <!-- Lens: thick white ring -->
+          <circle cx="212" cy="212" r="116" fill="#9007af" stroke="#ffffff" stroke-width="36"/>
+
+          <!-- Plus inside lens -->
+          <g stroke="#ffffff" stroke-width="32" stroke-linecap="round">
+            <line x1="212" y1="164" x2="212" y2="260"/>
+            <line x1="164" y1="212" x2="260" y2="212"/>
+          </g>
+        </symbol>
+      </defs>
+
+      <use href="#scrollzoom" width="512" height="512"/>
+    </svg>
+
+    <!-- Scale check row -->
+    <div class="scales">
+      <div class="scale">
+        <svg width="128" height="128" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <use href="#scrollzoom" width="512" height="512"/>
+        </svg>
+        <div class="label">128 px</div>
+      </div>
+      <div class="scale">
+        <svg width="64" height="64" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <use href="#scrollzoom" width="512" height="512"/>
+        </svg>
+        <div class="label">64 px</div>
+      </div>
+      <div class="scale">
+        <svg width="48" height="48" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <use href="#scrollzoom" width="512" height="512"/>
+        </svg>
+        <div class="label">48 px</div>
+      </div>
+      <div class="scale">
+        <svg width="32" height="32" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <use href="#scrollzoom" width="512" height="512"/>
+        </svg>
+        <div class="label">32 px</div>
+      </div>
+      <div class="scale">
+        <svg width="16" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" aria-hidden="true">
+          <use href="#scrollzoom" width="512" height="512"/>
+        </svg>
+        <div class="label">16 px</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

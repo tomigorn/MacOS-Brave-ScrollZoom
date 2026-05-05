@@ -1,0 +1,13 @@
+<svg viewBox="0 0 512 512" width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="512" height="512" rx="114" ry="114" fill="#9007af"/>
+  <!-- Handle (behind lens ring) -->
+  <line x1="281.3" y1="281.3" x2="410.0" y2="410.0" stroke="#ffffff" stroke-width="44" stroke-linecap="round"/>
+  <!-- Lens: thick white ring -->
+  <circle cx="212" cy="212" r="116" fill="#9007af" stroke="#ffffff" stroke-width="36"/>
+  <!-- Plus inside lens -->
+  <g stroke="#ffffff" stroke-width="32" stroke-linecap="round">
+    <line x1="212" y1="164" x2="212" y2="260"/>
+    <line x1="164" y1="212" x2="260" y2="212"/>
+  </g>
+</svg>
